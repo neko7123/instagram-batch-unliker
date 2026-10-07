@@ -59,8 +59,6 @@ The extension does **not** require your Instagram password.
 
 ## 📸 Preview
 
-> Add your screenshots to `assets/` using the filenames below.
-
 <p align="center">
   <img src="./assets/dashboard.png" width="380" alt="Instagram Batch Unliker extension dashboard">
   &nbsp;&nbsp;
@@ -725,6 +723,12 @@ Make sure you're using **Pause**, not Stop.
 Pause is designed to preserve the current run.
 
 Stop intentionally destroys the current run and starts fresh when Start is pressed again.
+
+---
+
+## "'Could not connect to Instagram' as status"
+
+Make sure you have refreshed the Instagram page after loading the extension once.
 
 ---
 
