@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instagram Batch Unliker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div class="brand-mark" aria-hidden="true">
+        <span class="brand-glyph">↶</span>
+      </div>
+      <div>
+        <h1>Batch Unliker</h1>
+        <p>Clean up your liked posts, your way.</p>
+      </div>
+    </header>
+
+    <section class="connection-card" aria-live="polite">
+      <span class="connection-dot" aria-hidden="true"></span>
+      <span id="connection">Checking current tab…</span>
+    </section>
+
+    <section class="panel" aria-label="Run settings">
+      <div class="section-title">
+        <span>Run settings</span>
+        <span class="badge">Local</span>
+      </div>
+
+      <label class="field">
+        <span class="field-label">Target posts</span>
+        <input id="target" type="number" min="1" inputmode="numeric" value="100">
+        <span class="field-help">Stop after this many posts have been unliked.</span>
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span class="field-label">Posts per batch</span>
+          <input id="batchSize" type="number" min="1" max="99" inputmode="numeric" value="20">
+          <span class="field-help">Up to 99 (Instagram limit).</span>
+        </label>
+
+        <label class="field">
+          <span class="field-label">Wait between batches</span>
+          <div class="input-with-unit">
+            <input id="delaySeconds" type="number" min="10" max="300" inputmode="numeric" value="10">
+            <span>sec</span>
+          </div>
+          <span class="field-help">Minimum 10 seconds.</span>
+        </label>
+      </div>
+
+      <label class="field speed-field">
+        <div class="speed-heading">
+          <span class="field-label">Selection speed</span>
+          <output id="speedValue" for="selectionDelayMs">250 ms</output>
+        </div>
+        <input id="selectionDelayMs" class="range" type="range" min="10" max="300" step="10" value="100">
+        <div class="range-labels">
+          <span>10 ms</span>
+          <span>300 ms</span>
+        </div>
+      </label>
+
+      <fieldset class="mode-field">
+        <legend>Run mode</legend>
+        <label class="mode-option">
+          <input type="radio" name="mode" value="loop" checked>
+          <span class="mode-copy">
+            <strong>Loop</strong>
+            <small>Continue until the target is reached.</small>
+          </span>
+        </label>
+        <label class="mode-option">
+          <input type="radio" name="mode" value="once">
+          <span class="mode-copy">
+            <strong>No loop</strong>
+            <small>Process one batch, then stop.</small>
+          </span>
+        </label>
+      </fieldset>
+    </section>
+
+    <div class="actions-secondary">
+      <button id="openLikes" class="button button-secondary" type="button">
+        <span aria-hidden="true">⌁</span>
+        Open Likes Page
+      </button>
+    </div>
+
+    <div class="actions-primary">
+      <button id="start" class="button button-primary" type="button">Start</button>
+      <button id="pause" class="button button-ghost" type="button">Pause</button>
+      <button id="stop" class="button button-danger" type="button">Stop</button>
+    </div>
+
+    <section class="progress-card" aria-live="polite">
+      <div class="status-line">
+        <span id="status">Checking…</span>
+        <strong id="progressText">0 / 100</strong>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+      <div class="privacy-note">
+        <span aria-hidden="true">✓</span>
+        Processing stays in your browser. No Instagram login is collected.
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>v11.0</span>
+      <a href="privacy.html" target="_blank" rel="noopener">Privacy</a>
+    </footer>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
